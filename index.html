@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yifeng He - Personal Homepage</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/photo.jpeg" alt="Yifeng He" width="80">
+        </figure>
+
+        <div class="info-content">
+ 
+          <h1 class="name" title="Yifeng He">Yifeng He</h1>
+
+          <p class="title">MA Student in TESOL</p>
+
+          <p style="margin-top: 10px; font-size: 14px; line-height: 1.5;">
+            CPC Probationary Member | Class of 2026<br>
+            ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong
+          </p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:1155249818@link.cuhk.edu.hk" class="contact-link">1155249818@link.cuhk.edu.hk</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Shenzhen, Guangdong, China</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/HyphenHe" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>Bio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Education</button>
+          </li>
+      
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Campus</button>
+          </li>
+      
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Internship</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="bio">
+
+        <header>
+          <h2 class="h2 article-title">Bio</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.
+          </p>
+
+          <p>
+            A few words about myself:
+          </p>
+
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 10px;">
+              <strong>HR Competence:</strong> Hands-on experience in talent mapping, campus recruitment, and event coordination.
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>Cross-industry Exposure:</strong> Interned in internet, audit, consulting, and international organizations.
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>Professional Attitude:</strong> Detail-oriented, responsible, quick learner, and strong communicator (ISTJ).
+            </li>
+          </ul>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <!--
+          - testimonials
+        
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+        -->
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience
+                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing
+                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+       
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-1-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-2-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-3-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-4-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-5-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-6-color.png" alt="client logo">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+        -->
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="education">
+
+        <header>
+          <h2 class="h2 article-title resume-title">Education</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">The Chinese University of Hong Kong</h4>
+
+              <span>2024 — 2026 (Expected)</span>
+
+              <p class="timeline-text">
+                MA in Teaching English to Speakers of Other Languages (TESOL)
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">[Previous University Name]</h4>
+
+              <span>[Year] — [Year]</span>
+
+              <p class="timeline-text">
+                [Bachelor's Degree], [Major]
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CAMPUS
+      -->
+
+      <article class="portfolio" data-page="campus">
+
+        <header>
+          <h2 class="h2 article-title">Campus</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Campus Leadership</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Additional Roles</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Campus Leadership</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Additional Roles</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="campus leadership">
+              
+              <h3 class="project-title"><strong>Nanbo Play Studio – Nanjing, Jiangsu</strong> | Assistant to the Director<br>
+              <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span></h3>
+
+              <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                <li style="margin-bottom: 8px;"><strong>Meeting Coordination:</strong> Organized multiple joint meetings and director office meetings, and published timely minutes to ensure effective implementation of resolutions.</li>
+                <li style="margin-bottom: 8px;"><strong>Team Culture:</strong> Delivered regular cultural training on Zheng Gang Foundation updates and organized cross-departmental team-building events to enhance cohesion.</li>
+                <li style="margin-bottom: 8px;"><strong>Performance Management:</strong> Supported the development of departmental KPIs, verified monthly evaluations, and recognized outstanding members.</li>
+                <li style="margin-bottom: 8px;"><strong>Training Programs:</strong> Led several professional skill workshops to strengthen core team capabilities.</li>
+              </ul>
+
+              <p class="project-category">Campus Leadership</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="campus leadership">
+              
+              <h3 class="project-title"><strong>Nanjing University Model UN Association – Nanjing, Jiangsu</strong> | Vice President & Director of Publicity<br>
+              <span style="font-size: 14px; color: #666;">2022.09 – 2024.08</span></h3>
+
+              <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                <li style="margin-bottom: 8px;"><strong>Operations:</strong> Managed daily operations, including activity applications and reports to ensure smooth execution.</li>
+                <li style="margin-bottom: 8px;"><strong>Flagship Events:</strong> Planned and executed signature events reaching students from multiple universities.</li>
+                <li style="margin-bottom: 8px;"><strong>Publicity:</strong> Led promotional efforts for NJUMUNC 2024, producing WeChat articles, posters, closing ceremony videos, and interviews; total article views exceeded expectations.</li>
+              </ul>
+
+              <p class="project-category">Campus Leadership</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              
+              <h3 class="project-title"><strong>NJU Model UN Association</strong> | Director of Academic Affairs<br>
+              <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span></h3>
+
+              <p class="project-category">Additional Roles</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              
+              <h3 class="project-title"><strong>Class Monitor, BA English Class A, School of Foreign Studies, NJU</strong><br>
+              <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span></h3>
+
+              <p class="project-category">Additional Roles</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              
+              <h3 class="project-title"><strong>NJU International Organizations Development Association</strong> | SD Department Head<br>
+              <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span></h3>
+
+              <p class="project-category">Additional Roles</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              
+              <h3 class="project-title"><strong>School of Foreign Studies, NJU</strong> | Head of Practice & Innovation Department, Communist Youth League Committee<br>
+              <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span></h3>
+
+              <p class="project-category">Additional Roles</p>
+            <br>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              
+              <h3 class="project-title"><strong>Xinqingxuan Publicity Talent Training Program</strong> | Participant<br>
+              <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span></h3>
+
+              <p class="project-category">Additional Roles</p>
+            <br>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #INTERNSHIP
+      -->
+
+      <article class="blog" data-page="internship">
+
+        <header>
+          <h2 class="h2 article-title">Internship</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+
+              <div class="blog-content">
+
+                <div class="blog-meta">
+                  <p class="blog-category">HR Internship</p>
+
+                  <span class="dot"></span>
+
+                  <time datetime="2026-03-01">Mar 2026 - Present</time>
+                </div>
+
+                <h3 class="h3 blog-item-title">ZURU – Shenzhen | Human Resources Intern</h3>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>Process Management:</strong> Responsible for NPD department R&D positions, including resume screening and interview scheduling.</li>
+                  <li style="margin-bottom: 8px;"><strong>Resume Sourcing:</strong> Supported 3D&FF university mapping, completed talent information review and contact collection for 80+ target departments and institutions.</li>
+                  <li style="margin-bottom: 8px;"><strong>Campus Recruitment Promotion:</strong> Managed online Q&A sessions, supported offline career fairs, and enhanced employer branding through dual online-offline channels.</li>
+                </ul>
+
+              </div>
+
+            </li>
+
+            <li class="blog-post-item">
+
+              <div class="blog-content">
+
+                <div class="blog-meta">
+                  <p class="blog-category">Campus Recruitment Intern</p>
+
+                  <span class="dot"></span>
+
+                  <time datetime="2025-06-01">Jun 2025 - Feb 2026</time>
+                </div>
+
+                <h3 class="h3 blog-item-title">Rednote – Shanghai & Shenzhen</h3>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>Engineering Talent Mapping:</strong> Adopted a dual-path strategy ("university teams + individuals") to identify top performers from national/international competitions; mapped candidates for frontend, backend, and other engineering roles.</li>
+                  <li style="margin-bottom: 8px;"><strong>Algorithm Talent Mapping:</strong> Independently mapped target universities' CS departments and key labs, identifying multiple qualified graduates to enrich the talent pipeline and support tech salons and campus recruitment.</li>
+                  <li style="margin-bottom: 8px;"><strong>Top Conference Sourcing:</strong> Mapped attendees of major academic conferences, initiated outreach via email, and successfully established connections with multiple candidates.</li>
+                  <li style="margin-bottom: 8px;"><strong>University Channel Development:</strong> Conducted targeted outreach to departments and faculties based on hiring plans for algorithm, product, and operations roles.</li>
+                  <li style="margin-bottom: 8px;"><strong>Interview Coordination:</strong> Managed end-to-end interview scheduling for engineering candidates, ensuring smooth communication and timely follow-ups.</li>
+                  <li style="margin-bottom: 8px;"><strong>Campus Ambassador Program:</strong> Screened and interviewed ambassador candidates, and monitored their onboarding and performance.</li>
+                </ul>
+
+              </div>
+
+            </li>
+
+            <li class="blog-post-item">
+
+              <div class="blog-content">
+
+                <div class="blog-meta">
+                  <p class="blog-category">Social Recruitment Intern</p>
+
+                  <span class="dot"></span>
+
+                  <time datetime="2025-02-01">Feb 2025 - May 2025</time>
+                </div>
+
+                <h3 class="h3 blog-item-title">EY (Ernst & Young) – Shanghai</h3>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>Talent Sourcing:</strong> Leveraged Liepin, 51Job, and other platforms to recruit for diverse roles including Climate Change & Sustainability Consulting, (Non-)Financial Audit, Cybersecurity, and Cost Engineering; multiple candidates successfully onboarded.</li>
+                  <li style="margin-bottom: 8px;"><strong>Interview Support:</strong> Prepared interview materials, coordinated candidate communications, maintained high interview attendance rates, and drafted salary proposals for successful candidates to facilitate offer issuance.</li>
+                </ul>
+
+              </div>
+
+            </li>
+
+            <li class="blog-post-item">
+
+              <div class="blog-content">
+
+                <div class="blog-meta">
+                  <p class="blog-category">Project Intern</p>
+
+                  <span class="dot"></span>
+
+                  <time datetime="2024-06-01">Jun 2024 - Dec 2024</time>
+                </div>
+
+                <h3 class="h3 blog-item-title">Save the Children – Shanghai | Early Childhood Development (0–6) Project Intern</h3>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>Event Planning & Execution:</strong> Supported LEGO parent-child activities and project wrap-up meetings; assisted in organizing lectures and workshops; maintained participant databases.</li>
+                  <li style="margin-bottom: 8px;"><strong>Design & Content Review:</strong> Independently designed brochures, posters, and social media posts; coordinated with vendors to produce and quality-check backdrops and exhibition materials.</li>
+                  <li style="margin-bottom: 8px;"><strong>Admin & Finance:</strong> Processed reimbursements, managed procurement, archived documents, and liaised with partners to ensure smooth project delivery.</li>
+                </ul>
+
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
