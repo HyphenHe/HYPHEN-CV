@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>何奕峰 - 个人主页</title>
+
+  <!-- custom css link -->
+  <style>
+    /*-----------------------------------*\
+      #CUSTOM PROPERTY
+    \*-----------------------------------*/
+
+    :root {
+      /**
+       * colors
+       */
+
+      /* Nanjing University Purple */
+      --nju-purple: #5B2E91;
+      --nju-purple-light: #7B4FA8;
+      --nju-purple-dark: #4A2375;
+      --nju-purple-pale: #E8DFF5;
+      --nju-purple-pale-2: #F5F0FA;
+
+      /* solid */
+      --white: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --gray-100: hsl(0, 0%, 95%);
+      --gray-200: hsl(0, 0%, 90%);
+      --gray-300: hsl(0, 0%, 80%);
+      --gray-400: hsl(0, 0%, 60%);
+      --gray-500: hsl(0, 0%, 50%);
+      --gray-600: hsl(0, 0%, 40%);
+      --gray-700: hsl(0, 0%, 30%);
+      --gray-800: hsl(0, 0%, 20%);
+      --black: hsl(0, 0%, 10%);
+
+      /**
+       * typography
+       */
+
+      --ff-poppins: 'PingFang SC', 'Microsoft YaHei', 'Poppins', sans-serif;
+
+      --fs-1: 24px;
+      --fs-2: 18px;
+      --fs-3: 17px;
+      --fs-4: 16px;
+      --fs-5: 14px;
+      --fs-6: 13px;
+      --fs-7: 12px;
+
+      --fw-300: 300;
+      --fw-400: 400;
+      --fw-500: 500;
+      --fw-600: 600;
+
+      /**
+       * shadow
+       */
+
+      --shadow-1: 0 4px 12px hsla(0, 0%, 0%, 0.08);
+      --shadow-2: 0 8px 20px hsla(0, 0%, 0%, 0.12);
+      --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.15);
+
+      /**
+       * transition
+       */
+
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease-in-out;
+    }
+
+    /*-----------------------------------*\
+      #RESET
+    \*-----------------------------------*/
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a { text-decoration: none; }
+    li { list-style: none; }
+    img, ion-icon, a, button, time, span { display: block; }
+    button { font: inherit; background: none; border: none; text-align: left; cursor: pointer; }
+    input, textarea { font-family: inherit; font-size: inherit; }
+    ion-icon { pointer-events: none; }
+    address { font-style: normal; }
+
+    html {
+      font-family: var(--ff-poppins);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      padding: 15px;
+      min-height: 100vh;
+    }
+
+    /*-----------------------------------*\
+      #REUSED STYLE
+    \*-----------------------------------*/
+
+    .sidebar,
+    article {
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--nju-purple-pale);
+      margin: 16px 0;
+    }
+
+    .icon-box {
+      position: relative;
+      background: var(--nju-purple);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: var(--white);
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .icon-box ion-icon { --ionicon-stroke-width: 35px; }
+
+    article { display: none; }
+    article.active {
+      display: block;
+      animation: fade 0.5s ease backwards;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .h2, .h3, .h4 {
+      color: var(--nju-purple-dark);
+      text-transform: none;
+    }
+
+    .h2 { font-size: var(--fs-1); }
+    .h3 { font-size: var(--fs-2); }
+    .h4 { font-size: var(--fs-4); }
+
+    .article-title {
+      position: relative;
+      padding-bottom: 7px;
+    }
+
+    .article-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--nju-purple);
+      border-radius: 3px;
+    }
+
+    /*-----------------------------------*\
+      #MAIN
+    \*-----------------------------------*/
+
+    main {
+      margin: 15px 12px;
+      min-width: 259px;
+      max-width: 1100px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    /*-----------------------------------*\
+      #LANGUAGE SWITCHER
+    \*-----------------------------------*/
+
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--nju-purple);
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      box-shadow: var(--shadow-2);
+      transition: var(--transition-1);
+    }
+
+    .lang-btn:hover {
+      background: var(--nju-purple-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+    }
+
+    .lang-btn ion-icon {
+      font-size: 18px;
+    }
+
+    /*-----------------------------------*\
+      #SIDEBAR
+    \*-----------------------------------*/
+
+    .sidebar {
+      margin-bottom: 15px;
+      height: auto;
+      max-height: none;
+    }
+
+    .sidebar-info {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .avatar-box {
+      background: var(--nju-purple-pale);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .info-content {
+      text-align: left;
+    }
+
+    .info-content .name {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-3);
+      font-weight: var(--fw-600);
+      letter-spacing: -0.25px;
+      margin-bottom: 8px;
+    }
+
+    .info-content .title-box {
+      display: inline-block;
+      background: var(--nju-purple);
+      color: var(--white);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    .sidebar-info-more {
+      margin-top: 20px;
+    }
+
+    .contacts-list { display: grid; gap: 15px; }
+
+    .contact-item {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-info {
+      max-width: calc(100% - 46px);
+      width: calc(100% - 46px);
+    }
+
+    .contact-info :is(.contact-link, time, address, p) {
+      color: var(--gray-700);
+      font-size: var(--fs-7);
+    }
+
+    .contact-info address { font-style: normal; }
+    .contact-title {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 2px;
+    }
+
+    .social-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 4px;
+      padding-left: 7px;
+      margin-top: 10px;
+    }
+
+    .social-item .social-link {
+      color: var(--nju-purple);
+      font-size: 20px;
+      transition: var(--transition-1);
+    }
+
+    .social-item .social-link:hover { 
+      color: var(--nju-purple-dark);
+      transform: scale(1.1);
+    }
+
+    /*-----------------------------------*\
+      #NAVBAR
+    \*-----------------------------------*/
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--nju-purple);
+      border: 1px solid var(--nju-purple-dark);
+      border-radius: 12px 12px 0 0;
+      box-shadow: var(--shadow-2);
+      z-index: 5;
+      padding: 10px 15px;
+    }
+
+    .navbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .navbar-link {
+      color: var(--white);
+      font-size: var(--fs-7);
+      padding: 8px 16px;
+      transition: var(--transition-1);
+      border-radius: 8px;
+      font-weight: var(--fw-400);
+    }
+
+    .navbar-link:hover,
+    .navbar-link:focus {
+      color: var(--nju-purple-pale);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar-link.active {
+      background: var(--white);
+      color: var(--nju-purple);
+      font-weight: var(--fw-600);
+    }
+
+    /*-----------------------------------*\
+      #ABOUT
+    \*-----------------------------------*/
+
+    .about .about-text { margin-bottom: 15px; }
+    
+    .about-text p {
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .about-text li {
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .about-text strong {
+      color: var(--nju-purple-dark);
+    }
+
+    /*-----------------------------------*\
+      #SKILLS
+    \*-----------------------------------*/
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .skill-item {
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      transition: var(--transition-1);
+    }
+
+    .skill-item:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+    }
+
+    .skill-item .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .skill-item .skill-icon {
+      color: var(--nju-purple);
+      font-size: 20px;
+    }
+
+    .skill-item .skill-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-500);
+    }
+
+    .skill-item .skill-desc {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.5;
+    }
+
+    .skill-item .skill-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--nju-purple-pale);
+      border-radius: 3px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .skill-item .skill-progress {
+      height: 100%;
+      background: var(--nju-purple);
+      border-radius: 3px;
+    }
+
+    /* Articles/Publications List */
+    .articles-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      transition: var(--transition-1);
+    }
+
+    .article-card:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+      transform: translateY(-2px);
+    }
+
+    .article-card .article-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-500);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .article-card .article-meta {
+      color: var(--gray-500);
+      font-size: var(--fs-7);
+      margin-bottom: 12px;
+    }
+
+    .article-card .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      transition: var(--transition-1);
+    }
+
+    .article-card .article-link:hover {
+      color: var(--nju-purple-dark);
+      gap: 8px;
+    }
+
+    /*-----------------------------------*\
+      #RESUME
+    \*-----------------------------------*/
+
+    .resume-title { margin-bottom: 20px; }
+
+    .timeline { margin-bottom: 30px; }
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .timeline-list {
+      font-size: var(--fs-6);
+      margin-left: 45px;
+    }
+
+    .timeline-item { position: relative; }
+
+    .timeline-item:not(:last-child) { margin-bottom: 20px; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: -30px;
+      width: 1px;
+      height: calc(100% + 50px);
+      background: var(--nju-purple-pale);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: -33px;
+      height: 6px;
+      width: 6px;
+      background: var(--nju-purple);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--nju-purple-pale);
+    }
+
+    .timeline-item-title {
+      font-size: var(--fs-6);
+      line-height: 1.3;
+      margin-bottom: 7px;
+      color: var(--nju-purple-dark);
+    }
+
+    .timeline-text {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.6;
+    }
+
+    .timeline-text span {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .core-courses {
+      margin-top: 8px;
+      padding: 10px;
+      background: var(--nju-purple-pale-2);
+      border-radius: 8px;
+      border-left: 3px solid var(--nju-purple);
+    }
+
+    .core-courses-title {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 5px;
+    }
+
+    .core-courses-list {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.6;
+    }
+
+    /* Honors & Awards */
+    .honors-section {
+      margin-top: 30px;
+    }
+
+    .honors-list {
+      margin-left: 45px;
+    }
+
+    .honor-item {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+    }
+
+    .honor-item::before {
+      content: "🏆";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+    }
+
+    .honor-item span {
+      color: var(--nju-purple);
+      font-weight: var(--fw-500);
+    }
+
+    /* Publications */
+    .publications-section {
+      margin-top: 30px;
+    }
+
+    .publication-item {
+      background: var(--white);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      margin-left: 45px;
+      margin-top: 15px;
+    }
+
+    .publication-item .pub-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .publication-item .pub-authors {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .publication-item .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      transition: var(--transition-1);
+    }
+
+    .publication-item .pub-link:hover {
+      color: var(--nju-purple-dark);
+      gap: 8px;
+    }
+
+    /*-----------------------------------*\
+      #PORTFOLIO
+    \*-----------------------------------*/
+
+    .filter-list { display: none; }
+    .filter-select-box { display: block; }
+
+    .filter-select {
+      position: relative;
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      color: var(--gray-700);
+      width: 100%;
+      padding: 12px 16px;
+      font-size: var(--fs-6);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-select.active .select-icon { transform: rotate(0.5turn); }
+    .select-list {
+      background: var(--nju-purple-pale-2);
+      position: absolute;
+      top: calc(100% + 6px);
+      width: 100%;
+      padding: 6px;
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 14px;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.15s ease-in-out;
+    }
+
+    .filter-select.active + .select-list {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .select-item button {
+      background: var(--nju-purple-pale-2);
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .select-item button:hover {
+      background: var(--nju-purple-pale);
+    }
+
+    .project-list {
+      display: grid;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .project-item { display: none; }
+    .project-item.active {
+      display: block;
+      animation: scaleUp 0.25s ease forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); }
+      100% { transform: scale(1); }
+    }
+
+    .project-item > a { width: 100%; }
+
+    .project-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .project-category {
+      color: var(--gray-500);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-300);
+      margin-top: 10px;
+    }
+
+    /*-----------------------------------*\
+      #BLOG
+    \*-----------------------------------*/
+
+    .blog-posts-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .blog-post-item > a {
+      position: relative;
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      height: 100%;
+      box-shadow: var(--shadow-1);
+      border-radius: 16px;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .blog-post-item > a:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+    }
+
+    .blog-content {
+      padding: 15px;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .blog-meta :is(.blog-category, time) {
+      color: var(--gray-500);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+    }
+
+    .blog-meta .dot {
+      background: var(--nju-purple);
+      width: 4px;
+      height: 4px;
+      border-radius: 4px;
+    }
+
+    .blog-item-title {
+      color: var(--nju-purple-dark);
+      margin-bottom: 10px;
+      transition: var(--transition-1);
+    }
+
+    .blog-post-item > a:hover .blog-item-title {
+      color: var(--nju-purple);
+    }
+
+    .blog-text {
+      color: var(--gray-600);
+      font-size: var(--fs-6);
+      line-height: 1.7;
+    }
+
+    /*-----------------------------------*\
+      #RESPONSIVE
+    \*-----------------------------------*/
+
+    @media (min-width: 550px) {
+      .sidebar, article { padding: 25px 30px; }
+      .sidebar-info_more .separator { margin: 20px 0; }
+      .contacts-list { gap: 20px; }
+      .social-list { padding-left: 10px; }
+      
+      .navbar {
+        bottom: auto;
+        top: 0;
+        left: auto;
+        right: 0;
+        width: max-content;
+        border-radius: 0 0 0 20px;
+        padding: 0 20px;
+        box-shadow: var(--shadow-2);
+        position: fixed;
+      }
+      
+      .navbar-list { gap: 20px; padding: 0; }
+      .navbar-link { --fs-7: 14px; }
+      
+      main { grid-template-columns: 280px 1fr; }
+      .sidebar { max-height: none; height: auto; }
+      .sidebar-info { flex-direction: column; }
+      .avatar-box { border-radius: 30px; }
+      .avatar-box img { width: 150px; height: 150px; }
+      .info-content { text-align: center; }
+      .separator:first-of-type { margin: 25px 0; }
+      .navbar-link { --fs-7: 13px; padding: 10px 15px; }
+      .navbar-link.active { font-size: var(--fs-7); }
+      .main-content { margin-top: 80px; }
+
+      .lang-switcher {
+        top: 20px;
+        left: 30px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px 20px 0 0;
+      }
+      main { gap: 30px; }
+      .about-text p { --fs-6: 15px; }
+      .timeline-list { margin-left: 65px; }
+      .timeline-item::before { left: -50px; }
+      .timeline-item::after { left: -53px; }
+      
+      .filter-list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 12px;
+        padding-left: 5px;
+        margin-bottom: 20px;
+      }
+      .filter-select-box { display: none; }
+      
+      .filter-item button {
+        color: var(--gray-600);
+        font-size: var(--fs-7);
+        padding: 6px 15px;
+        border-radius: 20px;
+        border: 1px solid var(--nju-purple-pale);
+        transition: var(--transition-1);
+        background: var(--white);
+      }
+      
+      .filter-item button:hover {
+        border-color: var(--nju-purple);
+        color: var(--nju-purple);
+      }
+      
+      .filter-item button.active {
+        background: var(--nju-purple);
+        color: var(--white);
+        border-color: var(--nju-purple);
+      }
+      
+      .skills-list { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      :root {
+        --shadow-1: 0 4px 12px hsla(0, 0%, 0%, 0.06);
+        --shadow-2: 0 8px 20px hsla(0, 0%, 0%, 0.1);
+        --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.12);
+      }
+      .main-content { margin-top: 0; }
+      .navbar {
+        left: auto;
+        right: 25px;
+        transform: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+      }
+      .navbar-list { gap: 15px; }
+
+      .lang-switcher {
+        top: 25px;
+        left: 35px;
+      }
+    }
+  </style>
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <a href="index.html" class="lang-btn">
+      <ion-icon name="language-outline"></ion-icon>
+      <span>English</span>
+    </a>
+  </div>
+
+  <!-- #MAIN -->
+  <main>
+
+    <!-- #SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="avatar.jpg" alt="何奕峰" width="150">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="何奕峰">何奕峰</h1>
+          <div class="title-box">硕士研究生</div>
+        </div>
+
+      </div>
+
+      <div class="sidebar-info-more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="flag-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">政治面貌</p>
+              <p class="contact-link">中共预备党员</p>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="briefcase-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">意向岗位</p>
+              <p class="contact-link">TA / HRBP</p>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">意向工作地点</p>
+              <p class="contact-link">上海市区</p>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">MBTI</p>
+              <p class="contact-link">ISTJ</p>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">邮箱</p>
+              <a href="mailto:1155249818@link.cuhk.edu.hk" class="contact-link">1155249818@link.cuhk.edu.hk</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">所在地</p>
+              <address>中国广东省深圳市</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/HyphenHe" class="social-link" aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" class="social-link" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="mailto:1155249818@link.cuhk.edu.hk" class="social-link" aria-label="Email">
+              <ion-icon name="mail-outline"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <!-- #main-content -->
+    <div class="main-content">
+
+      <!-- #NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>个人简介</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>教育背景</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>技能专长</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>校园经历</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>实习经历</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- #ABOUT -->
+      <article class="about active" data-page="个人简介">
+        <header>
+          <h2 class="h2 article-title">个人简介</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            我是何奕峰，目前就读于香港中文大学，预计于 2026 年 7 月毕业。我目前正在看上海的人力资源方向的正式工作机会。
+          </p>
+
+          <p>
+            我目前在 ZURU 担任人力资源实习生（校招方向），负责校园招聘的相关工作，主要负责新品研发部门的研发类岗位招聘。我曾在安永和小红书实习，分别负责社招和校招的工作。我还曾在救助儿童会（上海办公室）担任 0-6 岁儿童早期发展项目实习生，积累了充足的活动策划与执行经验。
+          </p>
+
+          <p><strong>一些自我评价：</strong></p>
+
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 10px;">
+              <strong>人力资源专业能力：</strong> 具备招聘的实习经历与创业公司的多模块工作经验，具备 Mapping 与活动筹办等能力
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>数据支撑的判断力：</strong> 能够将定量研究中的数据思维迁移到人力资源的工作中，基于数据进行思考和决策
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>多领域的工作经验：</strong> 曾进行互联网、审计、咨询、国际组织的实习，具备多领域、跨行业的思维与实操经验
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>相匹配的性格态度：</strong> 能够进行高效沟通，也能细致地完成各项工作，具备快速的学习能力与负责的工作态度
+            </li>
+          </ul>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills">
+          <h3 class="h3" style="margin-top: 25px; margin-bottom: 15px;">核心能力</h3>
+          <div class="skills-list">
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="people-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">人才招聘</span>
+              </div>
+              <p class="skill-desc">校园招聘、人才 Mapping、社会招聘</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="chatbubble-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">跨文化沟通</span>
+              </div>
+              <p class="skill-desc">双语沟通、跨文化胜任力</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="calendar-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">活动管理</span>
+              </div>
+              <p class="skill-desc">招聘会、宣讲会、团队建设活动</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="laptop-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">人力资源工具</span>
+              </div>
+              <p class="skill-desc">Office、BOSS 直聘、脉脉、前程无忧、领英、猎聘</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="sync-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">行业适应能力</span>
+              </div>
+              <p class="skill-desc">能够快速适应不同行业中的 HR 角色</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </article>
+
+      <!-- #RESUME -->
+      <article class="resume" data-page="教育背景">
+        <header>
+          <h2 class="h2 article-title resume-title">教育背景</h2>
+        </header>
+
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">教育经历</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">香港中文大学</h4>
+              <span>2025.09 — 2026.07</span>
+              <p class="timeline-text">对外英语教学硕士（TESOL）</p>
+              <div class="core-courses">
+                <p class="core-courses-title">核心课程</p>
+                <p class="core-courses-list">TESOL 研究方法、英语语言教学中的信息与通信技术</p>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">南京大学</h4>
+              <span>2021.09 — 2025.06</span>
+              <p class="timeline-text">英语学士</p>
+              <div class="core-courses">
+                <p class="core-courses-title">核心课程</p>
+                <p class="core-courses-list">应用语言学、社会语言学、美国社会与文化</p>
+              </div>
+            </li>
+
+          </ol>
+        </section>
+
+        <!-- Honors & Awards -->
+        <section class="honors-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="trophy-outline"></ion-icon>
+            </div>
+            <h3 class="h3">🏆 荣誉与奖项</h3>
+          </div>
+          <ul class="honors-list">
+            <li class="honor-item">徐晨江曼奖学金 <span>(2025.06)</span></li>
+            <li class="honor-item">优秀学生社团干部 <span>(2024.12)</span></li>
+            <li class="honor-item">国际组织人才奖学金 <span>(2024.06)</span></li>
+            <li class="honor-item">人民奖学金 <span>(2023.12 & 2024.12)</span></li>
+            <li class="honor-item">郑钢精英奖学金 <span>(2023.12)</span></li>
+          </ul>
+        </section>
+
+        <!-- Publications -->
+        <section class="publications-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
+            <h3 class="h3">📄 学术发表</h3>
+          </div>
+          <div class="publication-item">
+            <p class="pub-title">防疫标语的批评话语分析</p>
+            <p class="pub-authors">金 Z.，王 H.，邓 X.，& 何 Y. (2024)</p>
+            <a href="http://www.isciencegroup.com/cn/articleinfo/10440071" class="pub-link" target="_blank">
+              查看全文 →
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <!-- #SKILLS -->
+      <article class="skills-page" data-page="技能专长">
+        <header>
+          <h2 class="h2 article-title">技能与文章</h2>
+        </header>
+
+        <!-- Technical Skills -->
+        <section class="skills-content">
+          <h3 class="h3" style="margin-bottom: 15px;">技术技能</h3>
+          <div class="skills-list">
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="language-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">英语</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="videocam-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Capcut</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="color-palette-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Canva</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="newspaper-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">秀米</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="people-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">校园人才 Mapping</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="stats-chart-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">SPSS</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 40%;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Articles -->
+          <h3 class="h3" style="margin-top: 35px; margin-bottom: 15px;">📝 发表文章</h3>
+          <div class="articles-list">
+
+            <div class="article-card">
+              <p class="article-title">活动回顾：上海 0-6 岁儿童早期发展项目交流会议</p>
+              <p class="article-meta">救助儿童会 · 2024 年 12 月</p>
+              <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vVA" class="article-link" target="_blank">
+                阅读全文 →
+              </a>
+            </div>
+
+            <div class="article-card">
+              <p class="article-title">NJUMUNC 2024 圆满落幕</p>
+              <p class="article-meta">南京大学模拟联合国协会 · 2024 年 4 月</p>
+              <a href="https://mp.weixin.qq.com/s/jPyS_MG5eMgTgrMfJtkg0Q" class="article-link" target="_blank">
+                阅读全文 →
+              </a>
+            </div>
+
+            <div class="article-card">
+              <p class="article-title">欢迎新模联人！</p>
+              <p class="article-meta">南京大学模拟联合国协会 · 2023 年 8 月</p>
+              <a href="https://mp.weixin.qq.com/s/sKZze8Bny8qJrV7FX8w9oA" class="article-link" target="_blank">
+                阅读全文 →
+              </a>
+            </div>
+
+          </div>
+        </section>
+      </article>
+
+      <!-- #CAMPUS -->
+      <article class="portfolio" data-page="校园经历">
+        <header>
+          <h2 class="h2 article-title">校园经历</h2>
+        </header>
+
+        <section class="projects">
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn>全部</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>校园领导</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>其他职务</button>
+            </li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>选择类别</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>全部</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>校园领导</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>其他职务</button>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="campus leadership">
+              <h3 class="project-title">
+                <strong>南博游戏工作室 – 江苏南京</strong> | 总监助理<br>
+                <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span>
+              </h3>
+              <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                <li style="margin-bottom: 8px;"><strong>会议协调：</strong> 组织多次联席会议和总监办公会议，及时发布会议纪要，确保决议有效落实。</li>
+                <li style="margin-bottom: 8px;"><strong>团队文化：</strong> 定期开展郑钢基金会更新文化培训，组织跨部门团建活动，增强凝聚力。</li>
+                <li style="margin-bottom: 8px;"><strong>绩效管理：</strong> 支持部门 KPI 制定，核实月度评估，表彰优秀成员。</li>
+                <li style="margin-bottom: 8px;"><strong>培训项目：</strong> 领导多次专业技能工作坊，加强核心团队能力。</li>
+              </ul>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="campus leadership">
+              <h3 class="project-title">
+                <strong>南京大学模拟联合国协会 – 江苏南京</strong> | 副会长兼宣传总监<br>
+                <span style="font-size: 14px; color: #666;">2022.09 – 2024.08</span>
+              </h3>
+              <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                <li style="margin-bottom: 8px;"><strong>运营管理：</strong> 管理日常运营，包括活动申请和报告，确保顺利执行。</li>
+                <li style="margin-bottom: 8px;"><strong>旗舰活动：</strong> 策划并执行标志性活动，覆盖多所高校学生。</li>
+                <li style="margin-bottom: 8px;"><strong>宣传工作：</strong> 领导 NJUMUNC 2024 推广工作，制作微信公众号文章、海报、闭幕式视频和采访；文章总阅读量超出预期。</li>
+              </ul>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              <h3 class="project-title">
+                <strong>南京大学模拟联合国协会</strong> | 学术总监<br>
+                <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span>
+              </h3>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              <h3 class="project-title">
+                <strong>南京大学外国语学院英语 A 班</strong> | 班长<br>
+                <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span>
+              </h3>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              <h3 class="project-title">
+                <strong>南京大学国际组织发展协会</strong> | 可持续发展部部长<br>
+                <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span>
+              </h3>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              <h3 class="project-title">
+                <strong>南京大学外国语学院</strong> | 团委实践创新部部长<br>
+                <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span>
+              </h3>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="additional roles">
+              <h3 class="project-title">
+                <strong>新青轩宣传人才培养计划</strong> | 学员<br>
+                <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span>
+              </h3>
+            </li>
+
+          </ul>
+        </section>
+      </article>
+
+      <!-- #INTERNSHIP -->
+      <article class="blog" data-page="实习经历">
+        <header>
+          <h2 class="h2 article-title">实习经历</h2>
+        </header>
+
+        <section class="blog-posts">
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">校园招聘实习生</p>
+                  <span class="dot"></span>
+                  <time datetime="2026-03-01">2026 年 3 月 - 至今</time>
+                </div>
+                <h3 class="h3 blog-item-title">ZURU – 深圳</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>流程管理：</strong> 负责新产品开发部门研发职位，包括简历筛选和面试安排。</li>
+                  <li style="margin-bottom: 8px;"><strong>简历 sourcing：</strong> 支持 3D&FF 高校 Mapping，完成 80+ 目标院系和机构的人才信息审核和联系收集。</li>
+                  <li style="margin-bottom: 8px;"><strong>校园招聘推广：</strong> 管理线上问答 session，支持线下招聘会，通过线上线下双渠道提升雇主品牌。</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="blog-post-item">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">校园招聘实习生</p>
+                  <span class="dot"></span>
+                  <time datetime="2025-06-01">2025 年 6 月 - 2026 年 2 月</time>
+                </div>
+                <h3 class="h3 blog-item-title">小红书 – 上海 & 深圳</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>工程人才 Mapping：</strong> 采用"高校团队 + 个人"双路径策略，从全国/国际竞赛中识别顶尖人才；为前端、后端等工程岗位 Mapping 候选人。</li>
+                  <li style="margin-bottom: 8px;"><strong>算法人才 Mapping：</strong> 独立 Mapping 目标高校 CS 院系和重点实验室，识别多名合格毕业生，丰富人才库，支持技术沙龙和校园招聘。</li>
+                  <li style="margin-bottom: 8px;"><strong>顶级会议 sourcing：</strong> Mapping 主要学术会议参会者，通过邮件发起联系，成功与多名候选人建立联系。</li>
+                  <li style="margin-bottom: 8px;"><strong>高校渠道开发：</strong> 根据算法、产品和运营岗位的招聘计划，对院系进行针对性 outreach。</li>
+                  <li style="margin-bottom: 8px;"><strong>面试协调：</strong> 管理工程候选人的端到端面试安排，确保沟通顺畅和及时跟进。</li>
+                  <li style="margin-bottom: 8px;"><strong>校园大使项目：</strong> 筛选和面试大使候选人，监控其入职和表现。</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="blog-post-item">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">社会招聘实习生</p>
+                  <span class="dot"></span>
+                  <time datetime="2025-02-01">2025 年 2 月 - 2025 年 5 月</time>
+                </div>
+                <h3 class="h3 blog-item-title">安永会计师事务所 – 上海</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>人才 sourcing：</strong> 利用猎聘、前程无忧等平台招聘多样职位，包括气候变化与可持续发展咨询、（非）财务审计、网络安全和成本工程；多名候选人成功入职。</li>
+                  <li style="margin-bottom: 8px;"><strong>面试支持：</strong> 准备面试材料，协调候选人沟通，保持高面试出席率，为成功候选人起草薪资方案以促进 offer 发放。</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="blog-post-item">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">项目实习生</p>
+                  <span class="dot"></span>
+                  <time datetime="2024-06-01">2024 年 6 月 - 2024 年 12 月</time>
+                </div>
+                <h3 class="h3 blog-item-title">救助儿童会 – 上海 | 儿童早期发展 (0-6 岁) 项目实习生</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>活动策划与执行：</strong> 支持乐高亲子活动和项目总结会议；协助组织讲座和工作坊；维护参与者数据库。</li>
+                  <li style="margin-bottom: 8px;"><strong>设计与内容审核：</strong> 独立设计宣传册、海报和社交媒体帖子；与供应商协调制作和质量检查背景板和展览材料。</li>
+                  <li style="margin-bottom: 8px;"><strong>行政与财务：</strong> 处理报销，管理采购，归档文件，与合作伙伴联络确保项目顺利交付。</li>
+                </ul>
+              </div>
+            </li>
+
+          </ul>
+        </section>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- custom js link -->
+  <script>
+    'use strict';
+
+    // element toggle function
+    const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+    // navbar variables
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+    const pages = document.querySelectorAll("[data-page]");
+
+    // navbar toggle functionality
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        navLinks.forEach((l) => l.classList.remove("active"));
+        this.classList.add("active");
+
+        pages.forEach((page) => page.classList.remove("active"));
+        const targetPage = document.querySelector(`[data-page="${this.textContent}"]`);
+        if (targetPage) {
+          targetPage.classList.add("active");
+        }
+      });
+    });
+
+    // filter variables
+    const filterBtns = document.querySelectorAll("[data-filter-btn]");
+    const filterItems = document.querySelectorAll("[data-filter-item]");
+    const filterSelect = document.querySelector("[data-select]");
+    const selectValue = document.querySelector("[data-selecct-value]");
+    const selectItems = document.querySelectorAll("[data-select-item]");
+
+    // filter functionality for desktop
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+
+        const filterValue = this.textContent.toLowerCase();
+
+        filterItems.forEach((item) => {
+          if (filterValue === "全部" || item.dataset.category === "campus leadership") {
+            item.classList.add("active");
+          } else if (filterValue === "校园领导" && item.dataset.category === "campus leadership") {
+            item.classList.add("active");
+          } else if (filterValue === "其他职务" && item.dataset.category === "additional roles") {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      });
+    });
+
+    // filter functionality for mobile
+    if (filterSelect) {
+      filterSelect.addEventListener("click", function () {
+        elementToggleFunc(this);
+      });
+
+      selectItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          const selectedValue = this.textContent.toLowerCase();
+          selectValue.textContent = this.textContent;
+          elementToggleFunc(filterSelect);
+
+          filterBtns.forEach((btn) => btn.classList.remove("active"));
+          filterBtns.forEach((btn) => {
+            if (btn.textContent.toLowerCase() === selectedValue) {
+              btn.classList.add("active");
+            }
+          });
+
+          filterItems.forEach((item) => {
+            if (selectedValue === "全部" || item.dataset.category === "campus leadership") {
+              item.classList.add("active");
+            } else if (selectedValue === "校园领导" && item.dataset.category === "campus leadership") {
+              item.classList.add("active");
+            } else if (selectedValue === "其他职务" && item.dataset.category === "additional roles") {
+              item.classList.add("active");
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        });
+      });
+    }
+  </script>
+
+  <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
+
