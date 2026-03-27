@@ -5,21 +5,942 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yifeng He - Personal Homepage</title>
+  <title>Hyphen Yifeng He - Personal Homepage</title>
 
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <!-- custom css link -->
+  <style>
+    /*-----------------------------------*\
+      #CUSTOM PROPERTY
+    \*-----------------------------------*/
 
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+    :root {
+      /**
+       * colors
+       */
 
-  <!--
-    - google font link
-  -->
+      /* Nanjing University Purple */
+      --nju-purple: #5B2E91;
+      --nju-purple-light: #7B4FA8;
+      --nju-purple-dark: #4A2375;
+      --nju-purple-pale: #E8DFF5;
+      --nju-purple-pale-2: #F5F0FA;
+
+      /* solid */
+      --white: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --gray-100: hsl(0, 0%, 95%);
+      --gray-200: hsl(0, 0%, 90%);
+      --gray-300: hsl(0, 0%, 80%);
+      --gray-400: hsl(0, 0%, 60%);
+      --gray-500: hsl(0, 0%, 50%);
+      --gray-600: hsl(0, 0%, 40%);
+      --gray-700: hsl(0, 0%, 30%);
+      --gray-800: hsl(0, 0%, 20%);
+      --black: hsl(0, 0%, 10%);
+
+      /**
+       * typography
+       */
+
+      --ff-poppins: 'Poppins', sans-serif;
+
+      --fs-1: 24px;
+      --fs-2: 18px;
+      --fs-3: 17px;
+      --fs-4: 16px;
+      --fs-5: 14px;
+      --fs-6: 13px;
+      --fs-7: 12px;
+
+      --fw-300: 300;
+      --fw-400: 400;
+      --fw-500: 500;
+      --fw-600: 600;
+
+      /**
+       * shadow
+       */
+
+      --shadow-1: 0 4px 12px hsla(0, 0%, 0%, 0.08);
+      --shadow-2: 0 8px 20px hsla(0, 0%, 0%, 0.12);
+      --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.15);
+
+      /**
+       * transition
+       */
+
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease-in-out;
+    }
+
+    /*-----------------------------------*\
+      #RESET
+    \*-----------------------------------*/
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a { text-decoration: none; }
+    li { list-style: none; }
+    img, ion-icon, a, button, time, span { display: block; }
+    button { font: inherit; background: none; border: none; text-align: left; cursor: pointer; }
+    input, textarea { font-family: inherit; font-size: inherit; }
+    ion-icon { pointer-events: none; }
+    address { font-style: normal; }
+
+    html {
+      font-family: var(--ff-poppins);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      padding: 15px;
+      min-height: 100vh;
+    }
+
+    /*-----------------------------------*\
+      #REUSED STYLE
+    \*-----------------------------------*/
+
+    .sidebar,
+    article {
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--nju-purple-pale);
+      margin: 16px 0;
+    }
+
+    .icon-box {
+      position: relative;
+      background: var(--nju-purple);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: var(--white);
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .icon-box ion-icon { --ionicon-stroke-width: 35px; }
+
+    article { display: none; }
+    article.active {
+      display: block;
+      animation: fade 0.5s ease backwards;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .h2, .h3, .h4 {
+      color: var(--nju-purple-dark);
+      text-transform: capitalize;
+    }
+
+    .h2 { font-size: var(--fs-1); }
+    .h3 { font-size: var(--fs-2); }
+    .h4 { font-size: var(--fs-4); }
+
+    .article-title {
+      position: relative;
+      padding-bottom: 7px;
+    }
+
+    .article-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--nju-purple);
+      border-radius: 3px;
+    }
+
+    /*-----------------------------------*\
+      #MAIN
+    \*-----------------------------------*/
+
+    main {
+      margin: 15px 12px;
+      min-width: 259px;
+      max-width: 1100px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    /*-----------------------------------*\
+      #LANGUAGE SWITCHER
+    \*-----------------------------------*/
+
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--nju-purple);
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      box-shadow: var(--shadow-2);
+      transition: var(--transition-1);
+    }
+
+    .lang-btn:hover {
+      background: var(--nju-purple-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+    }
+
+    .lang-btn ion-icon {
+      font-size: 18px;
+    }
+
+    /*-----------------------------------*\
+      #SIDEBAR
+    \*-----------------------------------*/
+
+    .sidebar {
+      margin-bottom: 15px;
+      height: auto;
+      max-height: none;
+    }
+
+    .sidebar-info {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .avatar-box {
+      background: var(--nju-purple-pale);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .info-content {
+      text-align: left;
+    }
+
+    .info-content .name {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-3);
+      font-weight: var(--fw-600);
+      letter-spacing: -0.25px;
+      margin-bottom: 8px;
+    }
+
+    .info-content .title-box {
+      display: inline-block;
+      background: var(--nju-purple);
+      color: var(--white);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    .sidebar-info-more {
+      margin-top: 20px;
+    }
+
+    .contacts-list { display: grid; gap: 15px; }
+
+    .contact-item {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-info {
+      max-width: calc(100% - 46px);
+      width: calc(100% - 46px);
+    }
+
+    .contact-info :is(.contact-link, time, address, p) {
+      color: var(--gray-700);
+      font-size: var(--fs-7);
+    }
+
+    .contact-info address { font-style: normal; }
+    .contact-title {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 2px;
+    }
+
+    .social-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 4px;
+      padding-left: 7px;
+      margin-top: 10px;
+    }
+
+    .social-item .social-link {
+      color: var(--nju-purple);
+      font-size: 20px;
+      transition: var(--transition-1);
+    }
+
+    .social-item .social-link:hover { 
+      color: var(--nju-purple-dark);
+      transform: scale(1.1);
+    }
+
+    /*-----------------------------------*\
+      #NAVBAR
+    \*-----------------------------------*/
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--nju-purple);
+      border: 1px solid var(--nju-purple-dark);
+      border-radius: 12px 12px 0 0;
+      box-shadow: var(--shadow-2);
+      z-index: 5;
+      padding: 10px 15px;
+    }
+
+    .navbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .navbar-link {
+      color: var(--white);
+      font-size: var(--fs-7);
+      padding: 8px 16px;
+      transition: var(--transition-1);
+      border-radius: 8px;
+      font-weight: var(--fw-400);
+    }
+
+    .navbar-link:hover,
+    .navbar-link:focus {
+      color: var(--nju-purple-pale);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar-link.active {
+      background: var(--white);
+      color: var(--nju-purple);
+      font-weight: var(--fw-600);
+    }
+
+    /*-----------------------------------*\
+      #ABOUT
+    \*-----------------------------------*/
+
+    .about .about-text { margin-bottom: 15px; }
+    
+    .about-text p {
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .about-text li {
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .about-text strong {
+      color: var(--nju-purple-dark);
+    }
+
+    /*-----------------------------------*\
+      #SKILLS
+    \*-----------------------------------*/
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .skill-item {
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      transition: var(--transition-1);
+    }
+
+    .skill-item:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+    }
+
+    .skill-item .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .skill-item .skill-icon {
+      color: var(--nju-purple);
+      font-size: 20px;
+    }
+
+    .skill-item .skill-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-500);
+    }
+
+    .skill-item .skill-desc {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.5;
+    }
+
+    .skill-item .skill-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--nju-purple-pale);
+      border-radius: 3px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .skill-item .skill-progress {
+      height: 100%;
+      background: var(--nju-purple);
+      border-radius: 3px;
+    }
+
+    /* Articles/Publications List */
+    .articles-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      transition: var(--transition-1);
+    }
+
+    .article-card:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+      transform: translateY(-2px);
+    }
+
+    .article-card .article-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-500);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .article-card .article-meta {
+      color: var(--gray-500);
+      font-size: var(--fs-7);
+      margin-bottom: 12px;
+    }
+
+    .article-card .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      transition: var(--transition-1);
+    }
+
+    .article-card .article-link:hover {
+      color: var(--nju-purple-dark);
+      gap: 8px;
+    }
+
+    /*-----------------------------------*\
+      #RESUME
+    \*-----------------------------------*/
+
+    .resume-title { margin-bottom: 20px; }
+
+    .timeline { margin-bottom: 30px; }
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .timeline-list {
+      font-size: var(--fs-6);
+      margin-left: 45px;
+    }
+
+    .timeline-item { position: relative; }
+
+    .timeline-item:not(:last-child) { margin-bottom: 20px; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: -30px;
+      width: 1px;
+      height: calc(100% + 50px);
+      background: var(--nju-purple-pale);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: -33px;
+      height: 6px;
+      width: 6px;
+      background: var(--nju-purple);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--nju-purple-pale);
+    }
+
+    .timeline-item-title {
+      font-size: var(--fs-6);
+      line-height: 1.3;
+      margin-bottom: 7px;
+      color: var(--nju-purple-dark);
+    }
+
+    .timeline-text {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.6;
+    }
+
+    .timeline-text span {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .core-courses {
+      margin-top: 8px;
+      padding: 10px;
+      background: var(--nju-purple-pale-2);
+      border-radius: 8px;
+      border-left: 3px solid var(--nju-purple);
+    }
+
+    .core-courses-title {
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      margin-bottom: 5px;
+    }
+
+    .core-courses-list {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      line-height: 1.6;
+    }
+
+    /* Honors & Awards */
+    .honors-section {
+      margin-top: 30px;
+    }
+
+    .honors-list {
+      margin-left: 45px;
+    }
+
+    .honor-item {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+    }
+
+    .honor-item::before {
+      content: "🏆";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+    }
+
+    .honor-item span {
+      color: var(--nju-purple);
+      font-weight: var(--fw-500);
+    }
+
+    /* Publications */
+    .publications-section {
+      margin-top: 30px;
+    }
+
+    .publication-item {
+      background: var(--white);
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 12px;
+      padding: 15px;
+      margin-left: 45px;
+      margin-top: 15px;
+    }
+
+    .publication-item .pub-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .publication-item .pub-authors {
+      color: var(--gray-600);
+      font-size: var(--fs-7);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .publication-item .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--nju-purple);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      transition: var(--transition-1);
+    }
+
+    .publication-item .pub-link:hover {
+      color: var(--nju-purple-dark);
+      gap: 8px;
+    }
+
+    /*-----------------------------------*\
+      #PORTFOLIO
+    \*-----------------------------------*/
+
+    .filter-list { display: none; }
+    .filter-select-box { display: block; }
+
+    .filter-select {
+      position: relative;
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      color: var(--gray-700);
+      width: 100%;
+      padding: 12px 16px;
+      font-size: var(--fs-6);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-select.active .select-icon { transform: rotate(0.5turn); }
+    .select-list {
+      background: var(--nju-purple-pale-2);
+      position: absolute;
+      top: calc(100% + 6px);
+      width: 100%;
+      padding: 6px;
+      border: 1px solid var(--nju-purple-pale);
+      border-radius: 14px;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.15s ease-in-out;
+    }
+
+    .filter-select.active + .select-list {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .select-item button {
+      background: var(--nju-purple-pale-2);
+      color: var(--gray-700);
+      font-size: var(--fs-6);
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .select-item button:hover {
+      background: var(--nju-purple-pale);
+    }
+
+    .project-list {
+      display: grid;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .project-item { display: none; }
+    .project-item.active {
+      display: block;
+      animation: scaleUp 0.25s ease forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); }
+      100% { transform: scale(1); }
+    }
+
+    .project-item > a { width: 100%; }
+
+    .project-title {
+      color: var(--nju-purple-dark);
+      font-size: var(--fs-5);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .project-category {
+      color: var(--gray-500);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-300);
+      margin-top: 10px;
+    }
+
+    /*-----------------------------------*\
+      #BLOG
+    \*-----------------------------------*/
+
+    .blog-posts-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .blog-post-item > a {
+      position: relative;
+      background: var(--nju-purple-pale-2);
+      border: 1px solid var(--nju-purple-pale);
+      height: 100%;
+      box-shadow: var(--shadow-1);
+      border-radius: 16px;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .blog-post-item > a:hover {
+      border-color: var(--nju-purple);
+      box-shadow: var(--shadow-2);
+    }
+
+    .blog-content {
+      padding: 15px;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .blog-meta :is(.blog-category, time) {
+      color: var(--gray-500);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+    }
+
+    .blog-meta .dot {
+      background: var(--nju-purple);
+      width: 4px;
+      height: 4px;
+      border-radius: 4px;
+    }
+
+    .blog-item-title {
+      color: var(--nju-purple-dark);
+      margin-bottom: 10px;
+      transition: var(--transition-1);
+    }
+
+    .blog-post-item > a:hover .blog-item-title {
+      color: var(--nju-purple);
+    }
+
+    .blog-text {
+      color: var(--gray-600);
+      font-size: var(--fs-6);
+      line-height: 1.7;
+    }
+
+    /*-----------------------------------*\
+      #RESPONSIVE
+    \*-----------------------------------*/
+
+    @media (min-width: 550px) {
+      .sidebar, article { padding: 25px 30px; }
+      .sidebar-info_more .separator { margin: 20px 0; }
+      .contacts-list { gap: 20px; }
+      .social-list { padding-left: 10px; }
+      
+      .navbar {
+        bottom: auto;
+        top: 0;
+        left: auto;
+        right: 0;
+        width: max-content;
+        border-radius: 0 0 0 20px;
+        padding: 0 20px;
+        box-shadow: var(--shadow-2);
+        position: fixed;
+      }
+      
+      .navbar-list { gap: 20px; padding: 0; }
+      .navbar-link { --fs-7: 14px; }
+      
+      main { grid-template-columns: 280px 1fr; }
+      .sidebar { max-height: none; height: auto; }
+      .sidebar-info { flex-direction: column; }
+      .avatar-box { border-radius: 30px; }
+      .avatar-box img { width: 150px; height: 150px; }
+      .info-content { text-align: center; }
+      .separator:first-of-type { margin: 25px 0; }
+      .navbar-link { --fs-7: 13px; padding: 10px 15px; }
+      .navbar-link.active { font-size: var(--fs-7); }
+      .main-content { margin-top: 80px; }
+
+      .lang-switcher {
+        top: 20px;
+        right: 30px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px 20px 0 0;
+      }
+      main { gap: 30px; }
+      .about-text p { --fs-6: 15px; }
+      .timeline-list { margin-left: 65px; }
+      .timeline-item::before { left: -50px; }
+      .timeline-item::after { left: -53px; }
+      
+      .filter-list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 12px;
+        padding-left: 5px;
+        margin-bottom: 20px;
+      }
+      .filter-select-box { display: none; }
+      
+      .filter-item button {
+        color: var(--gray-600);
+        font-size: var(--fs-7);
+        padding: 6px 15px;
+        border-radius: 20px;
+        border: 1px solid var(--nju-purple-pale);
+        transition: var(--transition-1);
+        background: var(--white);
+      }
+      
+      .filter-item button:hover {
+        border-color: var(--nju-purple);
+        color: var(--nju-purple);
+      }
+      
+      .filter-item button.active {
+        background: var(--nju-purple);
+        color: var(--white);
+        border-color: var(--nju-purple);
+      }
+      
+      .skills-list { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      :root {
+        --shadow-1: 0 4px 12px hsla(0, 0%, 0%, 0.06);
+        --shadow-2: 0 8px 20px hsla(0, 0%, 0%, 0.1);
+        --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.12);
+      }
+      .main-content { margin-top: 0; }
+      .navbar {
+        left: auto;
+        right: 25px;
+        transform: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+      }
+      .navbar-list { gap: 15px; }
+
+      .lang-switcher {
+        top: 25px;
+        right: 35px;
+      }
+    }
+  </style>
+
+  <!-- google font link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -27,76 +948,97 @@
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <a href="index-cn.html" class="lang-btn">
+      <ion-icon name="language-outline"></ion-icon>
+      <span>中文</span>
+    </a>
+  </div>
 
+  <!-- #MAIN -->
   <main>
 
-    <!--
-      - #SIDEBAR
-    -->
-
+    <!-- #SIDEBAR -->
     <aside class="sidebar" data-sidebar>
 
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/photo.jpeg" alt="Yifeng He" width="80">
+          <img src="https://raw.githubusercontent.com/HyphenHe/HyphenHe/main/avatar.jpg" alt="Hyphen Yifeng He" width="150">
         </figure>
 
         <div class="info-content">
- 
-          <h1 class="name" title="Yifeng He">Yifeng He</h1>
-
-          <p class="title">MA Student in TESOL</p>
-
-          <p style="margin-top: 10px; font-size: 14px; line-height: 1.5;">
-            CPC Probationary Member | Class of 2026<br>
-            ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong
-          </p>
+          <h1 class="name" title="Hyphen Yifeng He">Hyphen Yifeng He</h1>
+          <div class="title-box">MA Student</div>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
 
       </div>
 
-      <div class="sidebar-info_more">
+      <div class="sidebar-info-more">
 
         <div class="separator"></div>
 
         <ul class="contacts-list">
 
           <li class="contact-item">
-
             <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+              <ion-icon name="flag-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:1155249818@link.cuhk.edu.hk" class="contact-link">1155249818@link.cuhk.edu.hk</a>
+              <p class="contact-title">Political Affiliation</p>
+              <p class="contact-link">CPC Probationary Member</p>
             </div>
-
           </li>
 
           <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="briefcase-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Intended Positions</p>
+              <p class="contact-link">TA / HRBP</p>
+            </div>
+          </li>
 
+          <li class="contact-item">
             <div class="icon-box">
               <ion-icon name="location-outline"></ion-icon>
             </div>
+            <div class="contact-info">
+              <p class="contact-title">Intended Workplace</p>
+              <p class="contact-link">Downtown Area of SHANGHAI</p>
+            </div>
+          </li>
 
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">MBTI</p>
+              <p class="contact-link">ISTJ</p>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:1155249818@link.cuhk.edu.hk" class="contact-link">1155249818@link.cuhk.edu.hk</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
             <div class="contact-info">
               <p class="contact-title">Location</p>
-
               <address>Shenzhen, Guangdong, China</address>
             </div>
-
           </li>
 
         </ul>
@@ -106,14 +1048,20 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="https://github.com/HyphenHe" class="social-link">
+            <a href="https://github.com/HyphenHe" class="social-link" aria-label="GitHub">
               <ion-icon name="logo-github"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" class="social-link">
+            <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" class="social-link" aria-label="LinkedIn">
               <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="mailto:1155249818@link.cuhk.edu.hk" class="social-link" aria-label="Email">
+              <ion-icon name="mail-outline"></ion-icon>
             </a>
           </li>
 
@@ -123,543 +1071,434 @@
 
     </aside>
 
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
+    <!-- #main-content -->
     <div class="main-content">
 
-      <!--
-        - #NAVBAR
-      -->
-
+      <!-- #NAVBAR -->
       <nav class="navbar">
-
         <ul class="navbar-list">
-
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>Bio</button>
+            <button class="navbar-link active" data-nav-link>Bio</button>
           </li>
-
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Education</button>
           </li>
-      
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Skills</button>
+          </li>
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Campus</button>
           </li>
-      
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Internship</button>
           </li>
-
         </ul>
-
       </nav>
 
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="bio">
-
+      <!-- #ABOUT -->
+      <article class="about active" data-page="bio">
         <header>
           <h2 class="h2 article-title">Bio</h2>
         </header>
 
         <section class="about-text">
           <p>
-            Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.
+            Hello! I'm Yifeng He, currently pursuing a MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. With a strong foundation in English language education and hands-on HR experience across multiple industries, I am passionate about bridging the gap between talent development and organizational growth.
           </p>
 
           <p>
-            A few words about myself:
+            I am now a HR intern at ZURU and responsible for campus recruitment, focusing on the NPD positions. I have completed HR internships at EY and Rednote, and am now actively seeking full-time opportunities in Human Resources. I used to work at Save the Children (Shanghai Office) as a project intern, where I gained sufficient experience to launch activities.
           </p>
+
+          <p><strong>A few words about myself:</strong></p>
 
           <ul style="list-style: none; padding-left: 0;">
             <li style="margin-bottom: 10px;">
-              <strong>HR Competence:</strong> Hands-on experience in talent mapping, campus recruitment, and event coordination.
+              <strong>🎯 HR Competence:</strong> Hands-on experience in talent mapping, campus recruitment, and event coordination across tech, audit, and consulting sectors.
             </li>
             <li style="margin-bottom: 10px;">
-              <strong>Cross-industry Exposure:</strong> Interned in internet, audit, consulting, and international organizations.
+              <strong>🌍 Cross-industry Exposure:</strong> Interned in Toys & FMCG (Zuru), internet (Rednote), assurance & consulting (EY), and non-governmental organization (Save the Children).
             </li>
             <li style="margin-bottom: 10px;">
-              <strong>Professional Attitude:</strong> Detail-oriented, responsible, quick learner, and strong communicator (ISTJ).
+              <strong>💼 Professional Attitude:</strong> Detail-oriented, responsible, quick learner, and strong communicator (ISTJ personality type).
+            </li>
+            <li style="margin-bottom: 10px;">
+              <strong>📚 Academic Foundation:</strong> Solid background in Applied Linguistics and Sociolinguistics, with expertise in cross-cultural communication.
             </li>
           </ul>
         </section>
 
-
-        <!--
-          - service
-        -->
-
-        <!--
-          - testimonials
-        
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
+        <!-- Skills Section -->
+        <section class="skills">
+          <h3 class="h3" style="margin-top: 25px; margin-bottom: 15px;">Core Competencies</h3>
+          <div class="skills-list">
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="people-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Talent Acquisition</span>
               </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
+              <p class="skill-desc">Campus recruitment, talent mapping, social recruitment</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
               </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-        -->
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
             </div>
 
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="chatbubble-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Cross-cultural Communication</span>
               </div>
-
+              <p class="skill-desc">Bilingual communication, intercultural competence</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
             </div>
 
-          </section>
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="calendar-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Event Management</span>
+              </div>
+              <p class="skill-desc">Career fairs, info sessions, team building activities</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
 
-        </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="laptop-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">HR Tools</span>
+              </div>
+              <p class="skill-desc">Office, Boss, Maimai, 51job, LinkedIn, and Liepin</p>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+            </div>
 
-
-        <!--
-          - clients
-       
-
-        <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
+          </div>
         </section>
-        -->
       </article>
 
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
+      <!-- #RESUME -->
       <article class="resume" data-page="education">
-
         <header>
           <h2 class="h2 article-title resume-title">Education</h2>
         </header>
 
         <section class="timeline">
-
           <div class="title-wrapper">
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Education</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
-
               <h4 class="h4 timeline-item-title">The Chinese University of Hong Kong</h4>
-
-              <span>2024 — 2026 (Expected)</span>
-
-              <p class="timeline-text">
-                MA in Teaching English to Speakers of Other Languages (TESOL)
-              </p>
-
+              <span>2025.09 — 2026.07</span>
+              <p class="timeline-text">MA in Teaching English to Speakers of Other Languages (TESOL)</p>
+              <div class="core-courses">
+                <p class="core-courses-title">Core Courses</p>
+                <p class="core-courses-list">Research Methods in TESOL, Information and Communication Technology in English Language Teaching</p>
+              </div>
             </li>
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">[Previous University Name]</h4>
-
-              <span>[Year] — [Year]</span>
-
-              <p class="timeline-text">
-                [Bachelor's Degree], [Major]
-              </p>
-
+              <h4 class="h4 timeline-item-title">Nanjing University</h4>
+              <span>2021.09 — 2025.06</span>
+              <p class="timeline-text">BA in English</p>
+              <div class="core-courses">
+                <p class="core-courses-title">Core Courses</p>
+                <p class="core-courses-list">Applied Linguistics, Sociolinguistics, American Society and Culture</p>
+              </div>
             </li>
 
           </ol>
-
         </section>
 
+        <!-- Honors & Awards -->
+        <section class="honors-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="trophy-outline"></ion-icon>
+            </div>
+            <h3 class="h3">🏆 Honors & Awards</h3>
+          </div>
+          <ul class="honors-list">
+            <li class="honor-item">Xu Chen-Jiang Man Scholarship <span>(2025.06)</span></li>
+            <li class="honor-item">Outstanding Student Club Cadre <span>(2024.12)</span></li>
+            <li class="honor-item">International Organization Talent Scholarship <span>(2024.06)</span></li>
+            <li class="honor-item">People's Scholarship <span>(2023.12 & 2024.12)</span></li>
+            <li class="honor-item">Zheng Gang Elite Scholarship <span>(2023.12)</span></li>
+          </ul>
+        </section>
+
+        <!-- Publications -->
+        <section class="publications-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
+            <h3 class="h3">📄 Publications</h3>
+          </div>
+          <div class="publication-item">
+            <p class="pub-title">A Critical Discourse Analysis of the Epidemic Prevention Slogans</p>
+            <p class="pub-authors">Jin, Z., Wang, H., Deng, X., & He, Y. (2024)</p>
+            <a href="http://www.isciencegroup.com/cn/articleinfo/10440071" class="pub-link" target="_blank">
+              View Full Paper →
+            </a>
+          </div>
+        </section>
       </article>
 
+      <!-- #SKILLS -->
+      <article class="skills-page" data-page="skills">
+        <header>
+          <h2 class="h2 article-title">Skills & Articles</h2>
+        </header>
 
+        <!-- Technical Skills -->
+        <section class="skills-content">
+          <h3 class="h3" style="margin-bottom: 15px;">Technical Skills</h3>
+          <div class="skills-list">
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="language-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">English</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
 
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="videocam-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Capcut</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%;"></div>
+              </div>
+            </div>
 
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="color-palette-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Canva</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
 
-      <!--
-        - #CAMPUS
-      -->
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="newspaper-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Xiumi</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
 
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="people-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Campus Talent Mapping</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="stats-chart-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">SPSS</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 40%;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Articles -->
+          <h3 class="h3" style="margin-top: 35px; margin-bottom: 15px;">📝 Published Articles</h3>
+          <div class="articles-list">
+
+            <div class="article-card">
+              <p class="article-title">Event Recap: Shanghai 0–6 Early Childhood Development Project Exchange Meeting</p>
+              <p class="article-meta">Save the Children · Dec 2024</p>
+              <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vVA" class="article-link" target="_blank">
+                Read Full Article →
+              </a>
+            </div>
+
+            <div class="article-card">
+              <p class="article-title">NJUMUNC 2024 Successfully Concluded</p>
+              <p class="article-meta">NJUMUN · Apr 2024</p>
+              <a href="https://mp.weixin.qq.com/s/jPyS_MG5eMgTgrMfJtkg0Q" class="article-link" target="_blank">
+                Read Full Article →
+              </a>
+            </div>
+
+            <div class="article-card">
+              <p class="article-title">Welcome, New MUNers!</p>
+              <p class="article-meta">NJUMUN · Aug 2023</p>
+              <a href="https://mp.weixin.qq.com/s/sKZze8Bny8qJrV7FX8w9oA" class="article-link" target="_blank">
+                Read Full Article →
+              </a>
+            </div>
+
+          </div>
+        </section>
+      </article>
+
+      <!-- #CAMPUS -->
       <article class="portfolio" data-page="campus">
-
         <header>
           <h2 class="h2 article-title">Campus</h2>
         </header>
 
         <section class="projects">
-
           <ul class="filter-list">
-
             <li class="filter-item">
               <button class="active" data-filter-btn>All</button>
             </li>
-
             <li class="filter-item">
               <button data-filter-btn>Campus Leadership</button>
             </li>
-
             <li class="filter-item">
               <button data-filter-btn>Additional Roles</button>
             </li>
-
           </ul>
 
           <div class="filter-select-box">
-
             <button class="filter-select" data-select>
-
               <div class="select-value" data-selecct-value>Select category</div>
-
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
               </div>
-
             </button>
 
             <ul class="select-list">
-
               <li class="select-item">
                 <button data-select-item>All</button>
               </li>
-
               <li class="select-item">
                 <button data-select-item>Campus Leadership</button>
               </li>
-
               <li class="select-item">
                 <button data-select-item>Additional Roles</button>
               </li>
-
             </ul>
-
           </div>
 
           <ul class="project-list">
 
             <li class="project-item active" data-filter-item data-category="campus leadership">
-              
-              <h3 class="project-title"><strong>Nanbo Play Studio – Nanjing, Jiangsu</strong> | Assistant to the Director<br>
-              <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span></h3>
-
+              <h3 class="project-title">
+                <strong>Nanbo Play Studio – Nanjing, Jiangsu</strong> | Assistant to the Director<br>
+                <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span>
+              </h3>
               <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                 <li style="margin-bottom: 8px;"><strong>Meeting Coordination:</strong> Organized multiple joint meetings and director office meetings, and published timely minutes to ensure effective implementation of resolutions.</li>
                 <li style="margin-bottom: 8px;"><strong>Team Culture:</strong> Delivered regular cultural training on Zheng Gang Foundation updates and organized cross-departmental team-building events to enhance cohesion.</li>
                 <li style="margin-bottom: 8px;"><strong>Performance Management:</strong> Supported the development of departmental KPIs, verified monthly evaluations, and recognized outstanding members.</li>
                 <li style="margin-bottom: 8px;"><strong>Training Programs:</strong> Led several professional skill workshops to strengthen core team capabilities.</li>
               </ul>
-
-              <p class="project-category">Campus Leadership</p>
-            <br>
             </li>
 
             <li class="project-item active" data-filter-item data-category="campus leadership">
-              
-              <h3 class="project-title"><strong>Nanjing University Model UN Association – Nanjing, Jiangsu</strong> | Vice President & Director of Publicity<br>
-              <span style="font-size: 14px; color: #666;">2022.09 – 2024.08</span></h3>
-
+              <h3 class="project-title">
+                <strong>Nanjing University Model UN Association – Nanjing, Jiangsu</strong> | Vice President & Director of Publicity<br>
+                <span style="font-size: 14px; color: #666;">2022.09 – 2024.08</span>
+              </h3>
               <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                 <li style="margin-bottom: 8px;"><strong>Operations:</strong> Managed daily operations, including activity applications and reports to ensure smooth execution.</li>
                 <li style="margin-bottom: 8px;"><strong>Flagship Events:</strong> Planned and executed signature events reaching students from multiple universities.</li>
                 <li style="margin-bottom: 8px;"><strong>Publicity:</strong> Led promotional efforts for NJUMUNC 2024, producing WeChat articles, posters, closing ceremony videos, and interviews; total article views exceeded expectations.</li>
               </ul>
-
-              <p class="project-category">Campus Leadership</p>
-            <br>
             </li>
 
             <li class="project-item active" data-filter-item data-category="additional roles">
-              
-              <h3 class="project-title"><strong>NJU Model UN Association</strong> | Director of Academic Affairs<br>
-              <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span></h3>
-
-              <p class="project-category">Additional Roles</p>
-            <br>
+              <h3 class="project-title">
+                <strong>NJU Model UN Association</strong> | Director of Academic Affairs<br>
+                <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span>
+              </h3>
             </li>
 
             <li class="project-item active" data-filter-item data-category="additional roles">
-              
-              <h3 class="project-title"><strong>Class Monitor, BA English Class A, School of Foreign Studies, NJU</strong><br>
-              <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span></h3>
-
-              <p class="project-category">Additional Roles</p>
-            <br>
+              <h3 class="project-title">
+                <strong>Class Monitor, BA English Class A, School of Foreign Studies, NJU</strong><br>
+                <span style="font-size: 14px; color: #666;">2024.09 – 2025.06</span>
+              </h3>
             </li>
 
             <li class="project-item active" data-filter-item data-category="additional roles">
-              
-              <h3 class="project-title"><strong>NJU International Organizations Development Association</strong> | SD Department Head<br>
-              <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span></h3>
-
-              <p class="project-category">Additional Roles</p>
-            <br>
+              <h3 class="project-title">
+                <strong>NJU International Organizations Development Association</strong> | SD Department Head<br>
+                <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span>
+              </h3>
             </li>
 
             <li class="project-item active" data-filter-item data-category="additional roles">
-              
-              <h3 class="project-title"><strong>School of Foreign Studies, NJU</strong> | Head of Practice & Innovation Department, Communist Youth League Committee<br>
-              <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span></h3>
-
-              <p class="project-category">Additional Roles</p>
-            <br>
+              <h3 class="project-title">
+                <strong>School of Foreign Studies, NJU</strong> | Head of Practice & Innovation Department, Communist Youth League Committee<br>
+                <span style="font-size: 14px; color: #666;">2023.09 – 2024.08</span>
+              </h3>
             </li>
 
             <li class="project-item active" data-filter-item data-category="additional roles">
-              
-              <h3 class="project-title"><strong>Xinqingxuan Publicity Talent Training Program</strong> | Participant<br>
-              <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span></h3>
-
-              <p class="project-category">Additional Roles</p>
-            <br>
+              <h3 class="project-title">
+                <strong>Xinqingxuan Publicity Talent Training Program</strong> | Participant<br>
+                <span style="font-size: 14px; color: #666;">2023.06 – 2024.06</span>
+              </h3>
             </li>
 
           </ul>
-
         </section>
-
       </article>
 
-
-
-
-
-      <!--
-        - #INTERNSHIP
-      -->
-
+      <!-- #INTERNSHIP -->
       <article class="blog" data-page="internship">
-
         <header>
           <h2 class="h2 article-title">Internship</h2>
         </header>
 
         <section class="blog-posts">
-
           <ul class="blog-posts-list">
 
             <li class="blog-post-item">
-
               <div class="blog-content">
-
                 <div class="blog-meta">
-                  <p class="blog-category">HR Internship</p>
-
+                  <p class="blog-category">Campus Recruitment Intern</p>
                   <span class="dot"></span>
-
                   <time datetime="2026-03-01">Mar 2026 - Present</time>
                 </div>
-
-                <h3 class="h3 blog-item-title">ZURU – Shenzhen | Human Resources Intern</h3>
-
+                <h3 class="h3 blog-item-title">ZURU – Shenzhen</h3>
                 <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                   <li style="margin-bottom: 8px;"><strong>Process Management:</strong> Responsible for NPD department R&D positions, including resume screening and interview scheduling.</li>
                   <li style="margin-bottom: 8px;"><strong>Resume Sourcing:</strong> Supported 3D&FF university mapping, completed talent information review and contact collection for 80+ target departments and institutions.</li>
                   <li style="margin-bottom: 8px;"><strong>Campus Recruitment Promotion:</strong> Managed online Q&A sessions, supported offline career fairs, and enhanced employer branding through dual online-offline channels.</li>
                 </ul>
-
               </div>
-
             </li>
 
             <li class="blog-post-item">
-
               <div class="blog-content">
-
                 <div class="blog-meta">
                   <p class="blog-category">Campus Recruitment Intern</p>
-
                   <span class="dot"></span>
-
                   <time datetime="2025-06-01">Jun 2025 - Feb 2026</time>
                 </div>
-
                 <h3 class="h3 blog-item-title">Rednote – Shanghai & Shenzhen</h3>
-
                 <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                   <li style="margin-bottom: 8px;"><strong>Engineering Talent Mapping:</strong> Adopted a dual-path strategy ("university teams + individuals") to identify top performers from national/international competitions; mapped candidates for frontend, backend, and other engineering roles.</li>
                   <li style="margin-bottom: 8px;"><strong>Algorithm Talent Mapping:</strong> Independently mapped target universities' CS departments and key labs, identifying multiple qualified graduates to enrich the talent pipeline and support tech salons and campus recruitment.</li>
@@ -668,84 +1507,132 @@
                   <li style="margin-bottom: 8px;"><strong>Interview Coordination:</strong> Managed end-to-end interview scheduling for engineering candidates, ensuring smooth communication and timely follow-ups.</li>
                   <li style="margin-bottom: 8px;"><strong>Campus Ambassador Program:</strong> Screened and interviewed ambassador candidates, and monitored their onboarding and performance.</li>
                 </ul>
-
               </div>
-
             </li>
 
             <li class="blog-post-item">
-
               <div class="blog-content">
-
                 <div class="blog-meta">
                   <p class="blog-category">Social Recruitment Intern</p>
-
                   <span class="dot"></span>
-
                   <time datetime="2025-02-01">Feb 2025 - May 2025</time>
                 </div>
-
                 <h3 class="h3 blog-item-title">EY (Ernst & Young) – Shanghai</h3>
-
                 <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                   <li style="margin-bottom: 8px;"><strong>Talent Sourcing:</strong> Leveraged Liepin, 51Job, and other platforms to recruit for diverse roles including Climate Change & Sustainability Consulting, (Non-)Financial Audit, Cybersecurity, and Cost Engineering; multiple candidates successfully onboarded.</li>
                   <li style="margin-bottom: 8px;"><strong>Interview Support:</strong> Prepared interview materials, coordinated candidate communications, maintained high interview attendance rates, and drafted salary proposals for successful candidates to facilitate offer issuance.</li>
                 </ul>
-
               </div>
-
             </li>
 
             <li class="blog-post-item">
-
               <div class="blog-content">
-
                 <div class="blog-meta">
                   <p class="blog-category">Project Intern</p>
-
                   <span class="dot"></span>
-
                   <time datetime="2024-06-01">Jun 2024 - Dec 2024</time>
                 </div>
-
                 <h3 class="h3 blog-item-title">Save the Children – Shanghai | Early Childhood Development (0–6) Project Intern</h3>
-
                 <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
                   <li style="margin-bottom: 8px;"><strong>Event Planning & Execution:</strong> Supported LEGO parent-child activities and project wrap-up meetings; assisted in organizing lectures and workshops; maintained participant databases.</li>
                   <li style="margin-bottom: 8px;"><strong>Design & Content Review:</strong> Independently designed brochures, posters, and social media posts; coordinated with vendors to produce and quality-check backdrops and exhibition materials.</li>
                   <li style="margin-bottom: 8px;"><strong>Admin & Finance:</strong> Processed reimbursements, managed procurement, archived documents, and liaised with partners to ensure smooth project delivery.</li>
                 </ul>
-
               </div>
-
             </li>
 
           </ul>
-
         </section>
-
       </article>
 
     </div>
-
   </main>
 
+  <!-- custom js link -->
+  <script>
+    'use strict';
 
+    // element toggle function
+    const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
+    // navbar variables
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+    const pages = document.querySelectorAll("[data-page]");
 
+    // navbar toggle functionality
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        navLinks.forEach((l) => l.classList.remove("active"));
+        this.classList.add("active");
 
+        pages.forEach((page) => page.classList.remove("active"));
+        const targetPage = document.querySelector(`[data-page="${this.textContent.toLowerCase()}"]`);
+        if (targetPage) {
+          targetPage.classList.add("active");
+        }
+      });
+    });
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+    // filter variables
+    const filterBtns = document.querySelectorAll("[data-filter-btn]");
+    const filterItems = document.querySelectorAll("[data-filter-item]");
+    const filterSelect = document.querySelector("[data-select]");
+    const selectValue = document.querySelector("[data-selecct-value]");
+    const selectItems = document.querySelectorAll("[data-select-item]");
 
-  <!--
-    - ionicon link
-  -->
+    // filter functionality for desktop
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+
+        const filterValue = this.textContent.toLowerCase();
+
+        filterItems.forEach((item) => {
+          if (filterValue === "all" || item.dataset.category === filterValue) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      });
+    });
+
+    // filter functionality for mobile
+    if (filterSelect) {
+      filterSelect.addEventListener("click", function () {
+        elementToggleFunc(this);
+      });
+
+      selectItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          const selectedValue = this.textContent.toLowerCase();
+          selectValue.textContent = this.textContent;
+          elementToggleFunc(filterSelect);
+
+          filterBtns.forEach((btn) => btn.classList.remove("active"));
+          filterBtns.forEach((btn) => {
+            if (btn.textContent.toLowerCase() === selectedValue) {
+              btn.classList.add("active");
+            }
+          });
+
+          filterItems.forEach((item) => {
+            if (selectedValue === "all" || item.dataset.category === selectedValue) {
+              item.classList.add("active");
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        });
+      });
+    }
+  </script>
+
+  <!-- ionicon link -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
-
 </html>
+
