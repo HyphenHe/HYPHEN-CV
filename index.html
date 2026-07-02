@@ -831,6 +831,31 @@
     }
 
     /*-----------------------------------*\
+      #FOOTER QUOTE
+    \*-----------------------------------*/
+
+    .footer-quote {
+      max-width: 1100px;
+      margin: 30px auto 15px;
+      text-align: center;
+    }
+
+    .footer-quote .purple-line {
+      width: 100%;
+      height: 3px;
+      background: var(--nju-purple);
+      border-radius: 3px;
+      margin-bottom: 15px;
+    }
+
+    .footer-quote p {
+      color: var(--black);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-400);
+      line-height: 1.6;
+    }
+
+    /*-----------------------------------*\
       #RESPONSIVE
     \*-----------------------------------*/
 
@@ -1038,7 +1063,8 @@
             </div>
             <div class="contact-info">
               <p class="contact-title">Location</p>
-              <address>Shenzhen, Guangdong, China</address>
+              <!-- 【修改3】Location 改为 Shanghai, China -->
+              <address>Shanghai, China</address>
             </div>
           </li>
 
@@ -1103,12 +1129,13 @@
         </header>
 
         <section class="about-text">
+          <!-- 【修改2】替换 Bio 内容，"A few words" 及之后保留不动 -->
           <p>
-            Hello! I'm Yifeng He, currently pursuing a MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. With a strong foundation in English language education and hands-on HR experience across multiple industries, I am passionate about bridging the gap between talent development and organizational growth.
+            Hello! I'm Yifeng He. I am going to obtain the MA degree in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong very soon as the class of 2026. I graduated from Nanjing University last year, where I received the professional and kindly instruction of Dr. Zhao Xin. With a strong foundation in English language education and hands-on HR experience across multiple industries, I am passionate about bridging the gap between talent development and organizational growth.
           </p>
 
           <p>
-            I am now a HR intern at ZURU and responsible for campus recruitment, focusing on the NPD positions. I have completed HR internships at EY and Rednote, and am now actively seeking full-time opportunities in Human Resources. I used to work at Save the Children (Shanghai Office) as a project intern, where I gained sufficient experience to launch activities.
+            I am now a HRBP intern at SAIC-GM and have been supporting the talent acquisition, talent development, and employee relationship of PATAC. Before that, I took the internships at EY. Rednote, and ZURU, where I developed the capability of both campus recruitment and social recruitment. I used to work at Save the Children (Shanghai Office) as a project intern, where I gained sufficient experience to launch activities.
           </p>
 
           <p><strong>A few words about myself:</strong></p>
@@ -1130,6 +1157,7 @@
         </section>
 
         <!-- Skills Section -->
+        <!-- 【修改1】移除了原来的 Adaptability 框，现在只剩4个，2x2 完美排列 -->
         <section class="skills">
           <h3 class="h3" style="margin-top: 25px; margin-bottom: 15px;">Core Competencies</h3>
           <div class="skills-list">
@@ -1175,17 +1203,6 @@
               <p class="skill-desc">Office, Boss, Maimai, 51job, LinkedIn, and Liepin</p>
               <div class="skill-bar">
                 <div class="skill-progress" style="width: 80%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <ion-icon name="sync-outline" class="skill-icon"></ion-icon>
-                <span class="skill-title">Adaptability</span>
-              </div>
-              <p class="skill-desc">Quickly adapt to HR roles across diverse industries</p>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%;"></div>
               </div>
             </div>
 
@@ -1328,13 +1345,25 @@
               </div>
             </div>
 
+            <!-- 【修改4】SPSS 改为 Claude Code，进度条改为 75% (3/4) -->
             <div class="skill-item">
               <div class="skill-header">
-                <ion-icon name="stats-chart-outline" class="skill-icon"></ion-icon>
-                <span class="skill-title">SPSS</span>
+                <ion-icon name="code-slash-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Claude Code</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 40%;"></div>
+                <div class="skill-progress" style="width: 75%;"></div>
+              </div>
+            </div>
+
+            <!-- 【修改1】Adaptability 从 Bio 页移到这里，和其他 Technical Skills 放一起 -->
+            <div class="skill-item">
+              <div class="skill-header">
+                <ion-icon name="sync-outline" class="skill-icon"></ion-icon>
+                <span class="skill-title">Adaptability</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
               </div>
             </div>
 
@@ -1487,12 +1516,29 @@
         <section class="blog-posts">
           <ul class="blog-posts-list">
 
+            <!-- 【修改5a】新增 SAIC-GM 实习经历，放在 ZURU 上面 -->
+            <li class="blog-post-item">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">HRBP Intern</p>
+                  <span class="dot"></span>
+                  <time datetime="2026-06-01">Jun 2026 - Jul 2026</time>
+                </div>
+                <h3 class="h3 blog-item-title">SAIC-GM – Shanghai</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                  <li style="margin-bottom: 8px;"><strong>Recruitment Analysis:</strong> Independently conducted in-depth analysis of recruitment data for PATAC for the 2025-2026 cycle, analyzing data of 612 campus candidates and 96 experienced hires and helping optimize the recruitment strategy.</li>
+                  <li style="margin-bottom: 8px;"><strong>Talent Development:</strong> Supported core talent development initiatives, including Culture Week and the Chief Engineer Training Camp, ensuring the successful delivery of the Chief Engineer Training Camp for 40 newly appointed and prospective Chief Engineers.</li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- 【修改5b】ZURU 时间改为 2026.03-2026.04 -->
             <li class="blog-post-item">
               <div class="blog-content">
                 <div class="blog-meta">
                   <p class="blog-category">Campus Recruitment Intern</p>
                   <span class="dot"></span>
-                  <time datetime="2026-03-01">Mar 2026 - Present</time>
+                  <time datetime="2026-03-01">2026.03 - 2026.04</time>
                 </div>
                 <h3 class="h3 blog-item-title">ZURU – Shenzhen</h3>
                 <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
@@ -1559,6 +1605,12 @@
 
     </div>
   </main>
+
+  <!-- 【修改6】页面最底部加紫线和黑字 -->
+  <div class="footer-quote">
+    <div class="purple-line"></div>
+    <p>You only got one shot Do not miss your chance to blow The opportunity comes once in the lifetime</p>
+  </div>
 
   <!-- custom js link -->
   <script>
@@ -1647,15 +1699,3 @@
 
 </body>
 </html>
-
-<div class="skill-item">
-  <div class="skill-header">
-    <ion-icon name="sync-outline" class="skill-icon"></ion-icon>
-    <span class="skill-title">Adaptability</span>
-  </div>
-  <p class="skill-desc">Quickly adapt to HR roles across diverse industries</p>
-  <div class="skill-bar">
-    <div class="skill-progress" style="width: 90%;"></div>
-  </div>
-</div>
-
