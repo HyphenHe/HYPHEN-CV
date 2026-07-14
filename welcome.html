@@ -26,7 +26,8 @@
     /* Left Side - Image */
     .image-side {
       flex: 1;
-      background: url('selfie.png') center/cover no-repeat;
+      /* 修改点1：使用 %20 替代空格，提高兼容性；添加后备背景色便于调试 */
+      background: url('Selfie%20(2).png') center/cover no-repeat, #f0f0f0;
       position: relative;
       animation: fadeInLeft 1.2s ease-out;
     }
